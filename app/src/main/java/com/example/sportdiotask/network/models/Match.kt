@@ -7,5 +7,5 @@ data class Match(
     @SerializedName("Matchdetail") val matchdetail: Matchdetail,
     @SerializedName("Notes") val notes: Notes,
     @SerializedName("Nuggets") val nuggets: List<String>,
-    @SerializedName("Teams") val teams: Teams
-):    java.io.Serializable
+    @SerializedName("Teams") val teams: Map<String, PlayerData>
+) : java.io.Serializable

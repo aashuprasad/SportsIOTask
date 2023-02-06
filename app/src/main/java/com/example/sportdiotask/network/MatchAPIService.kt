@@ -9,6 +9,10 @@ import retrofit2.http.GET
 
 const val BASE_URL = "https://demo.sportz.io/"
 
+private val retrofit = Retrofit.Builder()
+    .addConverterFactory(GsonConverterFactory.create())
+    .baseUrl(BASE_URL)
+    .build()
 
 interface MatchAPIService {
     @GET("sapk01222019186652.json")
@@ -18,7 +22,6 @@ interface MatchAPIService {
     suspend fun getIndNew(): Response<Match>
 }
 
-/*
 object MatchAPI{
     val retrofitService: MatchAPIService by lazy { retrofit.create(MatchAPIService::class.java)}
-}*/
+}

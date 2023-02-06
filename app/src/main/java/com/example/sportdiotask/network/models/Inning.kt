@@ -1,6 +1,16 @@
 package com.example.sportdiotask.network.models
 
+import com.google.gson.annotations.SerializedName
+
 data class Inning(
+    @SerializedName("0")
+    var inningFirst: InningDetail,
+
+    @SerializedName("1")
+    var inningSecond: InningDetail
+)
+
+data class InningDetail(
     val AllottedOvers: String,
     val Batsmen: List<Batsmen>,
     val Battingteam: String,

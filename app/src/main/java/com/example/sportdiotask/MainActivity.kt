@@ -1,17 +1,8 @@
 package com.example.sportdiotask
 
-import MatchAdapter
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View.GONE
-import androidx.lifecycle.lifecycleScope
-import com.example.sportdiotask.databinding.ActivityMainBinding
-import com.example.sportdiotask.network.MatchAPIService
-import com.example.sportdiotask.network.models.ApiUtilities
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,4 +39,5 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-}*/
+}
+*/

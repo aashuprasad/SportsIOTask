@@ -1,7 +1,6 @@
 package com.example.sportdiotask.network
 
 import com.example.sportdiotask.network.models.Match
-import com.example.sportdiotask.network.models.SAPKMatch
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,7 +12,7 @@ const val BASE_URL = "https://demo.sportz.io/"
 
 interface MatchAPIService {
     @GET("sapk01222019186652.json")
-    suspend fun getPakSa(): Response<SAPKMatch>
+    suspend fun getPakSa(): Response<Match>
 
     @GET("nzin01312019187360.json")
     suspend fun getIndNew(): Response<Match>

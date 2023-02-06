@@ -1,18 +1,11 @@
 package com.example.sportdiotask.network.models
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import com.google.gson.annotations.SerializedName
 
-@Parcelize
 data class Match(
-    val Code: String,
-    val Date: String,
-    val Daynight: String,
-    val Id: String,
-    val League: String,
-    val Livecoverage: String,
-    val Number: String,
-    val Offset: String,
-    val Time: String,
-    val Type: String
-):Parcelable
+    @SerializedName("Innings") val innings: List<Inning>,
+    @SerializedName("Matchdetail") val matchdetail: Matchdetail,
+    @SerializedName("Notes") val notes: Notes,
+    @SerializedName("Nuggets") val nuggets: List<String>,
+    @SerializedName("Teams") val teams: Teams
+):    java.io.Serializable

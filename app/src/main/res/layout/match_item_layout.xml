@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="match"
+            type="com.example.sportdiotask.network.models.Match" />
+    </data>
+<com.google.android.material.card.MaterialCardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/matchItemView"
@@ -35,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="Chennai vs Kolkata, 1st Match"
+                android:text="India Newzealand, ODI"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -58,7 +64,7 @@
                 android:id="@+id/venue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="venue : Wankhede Stadium, Mumbai"
+                android:text="@{match.component2().component12().toString()}"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -73,4 +79,4 @@
         </LinearLayout>
     </RelativeLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView></layout>

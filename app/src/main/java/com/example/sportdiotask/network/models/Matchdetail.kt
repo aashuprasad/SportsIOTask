@@ -1,5 +1,7 @@
 package com.example.sportdiotask.network.models
 
+import java.io.Serializable
+
 data class Matchdetail(
     val Equation: String,
     val Match: Match,
@@ -16,4 +18,4 @@ data class Matchdetail(
     val Weather: String,
     val Winmargin: String,
     val Winningteam: String
-)
+): Serializable

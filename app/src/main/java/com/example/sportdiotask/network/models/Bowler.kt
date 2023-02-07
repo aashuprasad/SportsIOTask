@@ -1,5 +1,7 @@
 package com.example.sportdiotask.network.models
 
+import java.io.Serializable
+
 data class Bowler(
     val Bowler: String,
     val Dots: String,
@@ -13,4 +15,4 @@ data class Bowler(
     val ThisOver: List<ThisOver>,
     val Wickets: String,
     val Wides: String
-)
+): Serializable

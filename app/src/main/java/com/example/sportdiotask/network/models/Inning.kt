@@ -1,5 +1,7 @@
 package com.example.sportdiotask.network.models
 
+import java.io.Serializable
+
 data class Inning(
     val AllottedOvers: String,
     val Batsmen: List<Batsmen>,
@@ -19,4 +21,4 @@ data class Inning(
     val Total: String,
     val Wickets: String,
     val Wides: String
-)
+): Serializable

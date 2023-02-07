@@ -1,5 +1,7 @@
 package com.example.sportdiotask.network.models
 
+import java.io.Serializable
+
 data class Batsmen(
     val Balls: String,
     val Batsman: String,
@@ -13,4 +15,4 @@ data class Batsmen(
     val Runs: String,
     val Sixes: String,
     val Strikerate: String
-)
+): Serializable

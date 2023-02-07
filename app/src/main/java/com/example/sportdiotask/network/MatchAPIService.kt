@@ -16,7 +16,7 @@ interface MatchAPIService {
     suspend fun getPakSa(): Response<SAPKMatch>
 
     @GET("nzin01312019187360.json")
-    suspend fun getIndNew(): Response<Match>
+    suspend fun getIndNew(): Response<SAPKMatch>
 }
 
 /*

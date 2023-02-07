@@ -2,8 +2,8 @@ package com.example.sportdiotask.network.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class Match(
     val Code: String,
     val Date: String,
@@ -15,4 +15,4 @@ data class Match(
     val Offset: String,
     val Time: String,
     val Type: String
-):Parcelable
+): Serializable

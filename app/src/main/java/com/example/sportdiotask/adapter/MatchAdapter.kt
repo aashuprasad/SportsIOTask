@@ -48,7 +48,7 @@ class MatchAdapter(val context: Context, val list: List<SAPKMatch>) :
         var nzPlayer: Player? = null
 
         for (i in item.teams.entries) {
-            Log.d(this.javaClass.simpleName, "Team.entries : ${i.value}")
+            //Log.d(this.javaClass.simpleName, "Team.entries : ${i.value}")
             when (i.value.Name_Full) {
                 "Pakistan" -> {
                     pakPlayer = i.value

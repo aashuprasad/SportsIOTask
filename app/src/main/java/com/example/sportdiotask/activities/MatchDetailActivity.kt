@@ -9,10 +9,14 @@ import com.example.sportdiotask.databinding.ActivityMatchDetailBinding
 import com.example.sportdiotask.network.models.PlayerStats
 import com.example.sportdiotask.network.models.SAPKMatch
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.item_layout.*
 
 class MatchDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityMatchDetailBinding
-
+    var inList: MutableList<String> = mutableListOf()
+    var nzList: MutableList<String> = mutableListOf()
+    var pkList: MutableList<String> = mutableListOf()
+    var saList: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,95 +28,46 @@ class MatchDetailActivity : AppCompatActivity() {
         } else {
             intent.extras?.getSerializable("matchDetail")
         } as SAPKMatch
-        Log.d(this.javaClass.simpleName, Gson().toJson(sapkMatch))
 
-        var saplayerStats: PlayerStats? = null
-        for (map in sapkMatch.teams.entries) {
-            for (playerStat in map.value.Players.entries) {
-                saplayerStats = playerStat.value
+/*
+        Log.d(this.javaClass.simpleName, Gson().toJson(sapkMatch.teams.entries))
+*/
+
+        for (i in sapkMatch.teams.entries) {
+            if (i.value.Name_Full == "India") {
+                for (j in i.value.Players.entries) {
+                    Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
+                    inList.add(j.value.NameFull.toString())
+                }
+            }
+            if (i.value.Name_Full == "New Zealand") {
+                for (j in i.value.Players.entries) {
+                    Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
+                    nzList.add(j.value.NameFull.toString())
+                }
+            }
+            if (i.value.Name_Full == "Pakistan") {
+                for (j in i.value.Players.entries) {
+                    Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
+                    pkList.add(j.value.NameFull.toString())
+                }
+            }
+            if (i.value.Name_Full == "South Africa") {
+                for (j in i.value.Players.entries) {
+                    Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
+                    saList.add(j.value.NameFull.toString())
+                }
             }
         }
-        binding.team1RV.adapter = MatchDetailAdapter(this, listOf(saplayerStats!!))
-        binding.team2RV.adapter = MatchDetailAdapter(this, listOf(saplayerStats!!))
+
+        if (sapkMatch.matchdetail.Venue.Id != "84") {
+            binding.team1RV.adapter = MatchDetailAdapter(this,inList)
+            binding.team2RV.adapter = MatchDetailAdapter(this, nzList)
+
+        }else {
+            binding.team1RV.adapter = MatchDetailAdapter(this, pkList)
+            binding.team2RV.adapter = MatchDetailAdapter(this, saList)
+        }
     }
 }
 
-
-
-
-
-/*class DetailActivity : AppCompatActivity() {
-    lateinit var binding: ActivityDetailBinding
-    var pakPlayerDetailList: MutableList<PlayerDetail> = mutableListOf()
-    var saPlayerDetailList: MutableList<PlayerDetail> = mutableListOf()
-    var indPlayerDetailList: MutableList<PlayerDetail> = mutableListOf()
-    var nzPlayerDetailList: MutableList<PlayerDetail> = mutableListOf()
-
-    @Suppress("DEPRECATION")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        val teamsData = intent.extras?.getSerializable("name") as Teams
-
-
-
-        var pakPlayerData: Map<String, PlayerDetail>? = null
-        var saPlayerData: Map<String, PlayerDetail>? = null
-        var indPlayerData: Map<String, PlayerDetail>? = null
-        var nzPlayerData: Map<String, PlayerDetail>? = null
-
-        pakPlayerDetailList.clear()
-        saPlayerDetailList.clear()
-        indPlayerDetailList.clear()
-        nzPlayerDetailList.clear()
-
-        if (intent.getStringExtra("match1").equals("savspak")) {
-            pakPlayerData = teamsData.pak?.Players
-            saPlayerData = teamsData.south_africa?.Player
-            pakPlayerData?.forEach {
-                pakPlayerDetailList.add(it.value)
-            }
-            saPlayerData?.forEach {
-                saPlayerDetailList.add(it.value)
-            }
-
-            binding.tvTeam1.text = teamsData.pak?.NameFull
-            binding.tvTeam2.text = teamsData.south_africa?.NameFull
-            binding.rcvTeamOne.apply {
-                this.layoutManager =
-                    LinearLayoutManager(this@DetailActivity, LinearLayoutManager.VERTICAL, false)
-                this.adapter = MatchDetailAdapter(this@DetailActivity, pakPlayerDetailList)
-            }
-
-            binding.rcvTeamTwo.apply {
-                this.layoutManager =
-                    LinearLayoutManager(this@DetailActivity, LinearLayoutManager.VERTICAL, false)
-                this.adapter = MatchDetailAdapter(this@DetailActivity, saPlayerDetailList)
-            }
-        } else if (intent.getStringExtra("match2").equals("indvsnz")) {
-            indPlayerData = teamsData.ind?.Players
-            nzPlayerData = teamsData.nz?.Players
-            indPlayerData?.forEach {
-                indPlayerDetailList.add(it.value)
-            }
-            nzPlayerData?.forEach {
-                nzPlayerDetailList.add(it.value)
-            }
-            binding.tvTeam1.text = teamsData.ind?.NameFull
-            binding.tvTeam2.text = teamsData.nz?.NameFull
-            binding.rcvTeamOne.apply {
-                this.layoutManager =
-                    LinearLayoutManager(this@DetailActivity, LinearLayoutManager.VERTICAL, false)
-                this.adapter = MatchDetailAdapter(this@DetailActivity, indPlayerDetailList)
-            }
-
-            binding.rcvTeamTwo.apply {
-                this.layoutManager =
-                    LinearLayoutManager(this@DetailActivity, LinearLayoutManager.VERTICAL, false)
-                this.adapter = MatchDetailAdapter(this@DetailActivity, nzPlayerDetailList)
-            }
-        }
-
-    }
-}*/

@@ -11,7 +11,7 @@ import com.example.sportdiotask.databinding.ItemLayoutBinding
 import com.example.sportdiotask.network.models.PlayerStats
 import com.example.sportdiotask.network.models.Teams
 
-class MatchDetailAdapter(val context: Context, val players: List<PlayerStats> ): RecyclerView.Adapter<MatchDetailAdapter.MatchDetailViewHolder>() {
+class MatchDetailAdapter(val context: Context, val players: List<String> ): RecyclerView.Adapter<MatchDetailAdapter.MatchDetailViewHolder>() {
 
     class MatchDetailViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var binding = DetailItemLayoutBinding.bind(view)
@@ -27,7 +27,8 @@ class MatchDetailAdapter(val context: Context, val players: List<PlayerStats> ):
         val playerData = players[position]
 
         holder.binding.apply {
-            playerName.text = playerData.NameFull
+            //playerName.text = playerData.NameFull
+            playerName.text= players[position]
         }
 
 

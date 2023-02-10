@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.item_layout.*
 
 class MatchDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityMatchDetailBinding
-    var inList: MutableList<String> = mutableListOf()
-    var nzList: MutableList<String> = mutableListOf()
-    var pkList: MutableList<String> = mutableListOf()
-    var saList: MutableList<String> = mutableListOf()
+    var inList: MutableList<PlayerStats> = mutableListOf()
+    var nzList: MutableList<PlayerStats> = mutableListOf()
+    var pkList: MutableList<PlayerStats> = mutableListOf()
+    var saList: MutableList<PlayerStats> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,25 +37,25 @@ class MatchDetailActivity : AppCompatActivity() {
             if (i.value.Name_Full == "India") {
                 for (j in i.value.Players.entries) {
                     Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
-                    inList.add(j.value.NameFull.toString())
+                    inList.add(j.value)
                 }
             }
             if (i.value.Name_Full == "New Zealand") {
                 for (j in i.value.Players.entries) {
                     Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
-                    nzList.add(j.value.NameFull.toString())
+                    nzList.add(j.value)
                 }
             }
             if (i.value.Name_Full == "Pakistan") {
                 for (j in i.value.Players.entries) {
                     Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
-                    pkList.add(j.value.NameFull.toString())
+                    pkList.add(j.value)
                 }
             }
             if (i.value.Name_Full == "South Africa") {
                 for (j in i.value.Players.entries) {
                     Log.d(this.javaClass.simpleName, "Team.entries : ${j.value.NameFull}")
-                    saList.add(j.value.NameFull.toString())
+                    saList.add(j.value)
                 }
             }
         }
